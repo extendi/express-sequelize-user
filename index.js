@@ -24,7 +24,7 @@ module.exports = function(app, options){
                     results.forEach(function(result){
                         if(result){
                             result.context = {
-                                user: req.user
+                                user: res.locals.user
                             }
                         }
                     })
@@ -42,7 +42,7 @@ module.exports = function(app, options){
                 return model[name].apply(model, arguments).then(function(result){
                     if(result){
                         result.context = {
-                            user: req.user
+                            user: res.locals.user
                         }
                     }
                     return result;
@@ -59,7 +59,7 @@ module.exports = function(app, options){
                 var result = model[name].apply(model, arguments);
                 if(result){
                     result.context = {
-                        user: req.user
+                        user: res.locals.user
                     }
                 }
                 return result;
